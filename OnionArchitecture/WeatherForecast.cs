@@ -1,4 +1,4 @@
-namespace CQRS
+namespace OnionArchitecture
 {
     public class WeatherForecast
     {

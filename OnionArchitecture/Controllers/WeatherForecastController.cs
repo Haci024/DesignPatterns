@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CQRS.Controllers
+namespace OnionArchitecture.Controllers
 {
     [ApiController]
     [Route("[controller]")]
