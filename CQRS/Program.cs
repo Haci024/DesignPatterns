@@ -11,12 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>();
 
-builder.Services.AddScoped<GetProductHandler>();
+builder.Services.AddScoped<ProductListHandler>();
 builder.Services.AddScoped<GetProductResult>();
 builder.Services.AddScoped<AddProductHandler>();
 builder.Services.AddScoped<DeleteProductHandler>();
 builder.Services.AddScoped<UpdateProductHandler>();
-builder.Services.AddScoped<UpdateProductCommand>();
 builder.Services.AddScoped<GetProductByIdHandler>();
 
 

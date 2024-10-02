@@ -12,14 +12,16 @@ namespace CQRS.Controllers
     public class ProductsController : ControllerBase
     {
 
-        private readonly GetProductHandler _getProducts;
+        private readonly ProductListHandler _getProducts;
         private readonly AddProductHandler _addProducts;
         private readonly GetProductByIdHandler _byIdProdcts;
         private readonly DeleteProductHandler _deleteProduct;
-        public ProductsController(GetProductHandler getProducts,AddProductHandler addProduct,GetProductByIdHandler byIdHandler, DeleteProductHandler deleteProduct)
+        private readonly UpdateProductHandler _updateProduct;
+        public ProductsController(ProductListHandler getProducts,AddProductHandler addProduct,GetProductByIdHandler byIdHandler, DeleteProductHandler deleteProduct,UpdateProductHandler updateHandler)
         {
                _getProducts =getProducts;
-               _addProducts = addProduct;
+            _updateProduct = updateHandler;
+           _addProducts = addProduct;
             _byIdProdcts = byIdHandler;
             _deleteProduct=deleteProduct;   
         }
@@ -49,6 +51,14 @@ namespace CQRS.Controllers
             _deleteProduct.Handle(new DeleteProductCommand(Id));
 
             return Ok("Mehsul silindi!");
+        }
+        [HttpPut("Update/{id}")]
+        public IActionResult UpdateProduct(int id,UpdateProductCommand command)
+        {
+            command.Id = id;
+             _updateProduct.Update(command);
+           
+            return Ok(command);
         }
     }
 }

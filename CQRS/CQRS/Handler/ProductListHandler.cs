@@ -3,10 +3,10 @@ using CQRS.CQRS.Result;
 
 namespace CQRS.CQRS.Handler
 {
-    public class GetProductHandler
+    public class ProductListHandler
     {
         private readonly AppDbContext _db;
-        public GetProductHandler(AppDbContext db)
+        public ProductListHandler(AppDbContext db)
         {
             _db = db;
         }
